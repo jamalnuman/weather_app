@@ -1,8 +1,8 @@
 <template>
-  <div id="app" :class="typeof isItHot != 'undefined' && isItHot < 60 ? 'cold' : ''">
+  <div id="app" :class="typeof isItHot !== 'undefined' && isItHot < 60 ? 'cold' : ''">
     <main>
       <div class="search-box">
-        <input class="search-bar" type="text" v-model="searchbox" placeholder="Chiago, Illinois">
+        <input class="search-bar" type="text" v-model="searchbox" placeholder="Example: Chiago, Illinois">
         <button id='button' @click='search()'>Get Weather</button>
       </div>
 
@@ -26,7 +26,9 @@
 
 <script>
   import axios from 'axios';
+
   let temperature = ''
+
   export default {
     data() {
       return {
@@ -45,11 +47,12 @@
         date = date.toString().slice(0,15)
         this.currentDate = date
         this.searchbox = this.searchbox.split(',')
+
         axios
           .get(`/weather?q=${this.searchbox[0]},${this.searchbox[1]}&appid=${this.apikey}&units=imperial`)
           // .get("/weather?q=" + this.searchbox[0] + ',' + this.searchbox[1] + "&appid=" + this.apikey + "&units=imperial")
           .then(response => {
-            console.log(response)
+            //console.log(response)
             this.currentTemp = Math.round(response.data.main.temp) + '°'
             this.searchName = response.data.name
             this.currentWeather = response.data.weather[0].main
@@ -106,7 +109,7 @@ body {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 0px 16px 0px 16px;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 
 .search-box .search-bar:focus {
@@ -125,7 +128,8 @@ body {
 
 #button {
   padding: 10px;
-  margin: 10px;
+  margin: 0 auto; /*to center the item*/
+  margin-top: 10px;
   display: block;
   width: 50%;
   font-size: 20px;
@@ -134,9 +138,8 @@ body {
   border-radius: 0px 16px 0px 16px;
   appearance: none;
   outline: none;
-  transition: 0.4s;
-  border: solid 2px grey;
-  margin-left: 430px;
+  transition: 0.5s;
+  border: solid 2px grey; 
 }
 
 #button:focus {
