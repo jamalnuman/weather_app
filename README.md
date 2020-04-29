@@ -1,19 +1,12 @@
-# weather_app
+### Weather Application
 
-## Project setup
-```
-npm install
-```
+Users can enter a city and state and get the current weather info; which is then displayed on the screen. The background picture changes depending upon the temperature of the city. This was written using Vue. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### New York, New York
+![](public/newyork.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Miami, Florida
+![](public/miami.png)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Let's connect 
+[LinkedIn](https://www.linkedin.com/in/jamal-numan/)
